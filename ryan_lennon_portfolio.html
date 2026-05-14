@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryan Lennon — Space Systems Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #0a0f1e;
+      --navy-mid: #111827;
+      --navy-light: #1a2540;
+      --electric: #4fffb0;
+      --electric-dim: #1a7a50;
+      --silver: #c8d6e5;
+      --silver-dim: #6b7fa0;
+      --white: #f0f5ff;
+      --accent-orange: #ff7c3d;
+      --mono: 'DM Mono', monospace;
+      --serif: 'Fraunces', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--navy);
+      color: var(--silver);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(79, 255, 176, 0.1);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--electric);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--silver-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--electric);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(79, 255, 176, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 255, 176, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(79, 255, 176, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--electric);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--electric);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.0;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--electric);
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--silver-dim);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      background: var(--electric);
+      color: var(--navy);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 500;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--silver);
+      border: 1px solid rgba(200, 214, 229, 0.3);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--electric);
+      color: var(--electric);
+    }
+
+    /* SECTION WRAPPER */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 3rem;
+      letter-spacing: -0.01em;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, rgba(79, 255, 176, 0.3), transparent);
+      margin: 0;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--navy);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--silver-dim);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+      font-size: 16px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(79, 255, 176, 0.1);
+      padding: 1.5rem;
+    }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--electric);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--silver-dim);
+      text-transform: uppercase;
+    }
+
+    .skills-list {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(79, 255, 176, 0.2);
+      color: var(--electric);
+      letter-spacing: 0.05em;
+      background: rgba(79, 255, 176, 0.05);
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      background: var(--navy-mid);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--electric), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3.5rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.35rem;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--electric);
+      background: var(--navy-mid);
+      transform: rotate(45deg);
+    }
+
+    .timeline-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--electric);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-role {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-company {
+      font-size: 14px;
+      color: var(--silver-dim);
+      margin-bottom: 1rem;
+    }
+
+    .timeline-bullets {
+      padding-left: 1.25rem;
+    }
+
+    .timeline-bullets li {
+      font-size: 14px;
+      color: var(--silver-dim);
+      font-weight: 300;
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+
+    /* EDUCATION */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .edu-card {
+      background: var(--navy);
+      border: 1px solid rgba(79, 255, 176, 0.1);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .edu-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--electric);
+    }
+
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .edu-school {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--electric);
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-meta {
+      font-size: 13px;
+      color: var(--silver-dim);
+      margin-bottom: 0.75rem;
+    }
+
+    .edu-gpa {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--silver-dim);
+    }
+
+    /* PROJECTS */
+    #projects {
+      background: var(--navy);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .project-card {
+      background: var(--navy-light);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .project-card:hover {
+      background: #1e2d4a;
+    }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      background: var(--navy-mid);
+    }
+
+    .project-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--electric-dim);
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--silver-dim);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 0.25rem 0.6rem;
+      background: rgba(79, 255, 176, 0.08);
+      border: 1px solid rgba(79, 255, 176, 0.15);
+      color: var(--electric);
+      letter-spacing: 0.05em;
+    }
+
+    .project-details {
+      list-style: none;
+    }
+
+    .project-details li {
+      font-size: 13px;
+      color: var(--silver-dim);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(200, 214, 229, 0.06);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .project-details li::before {
+      content: '→';
+      color: var(--electric);
+      font-family: var(--mono);
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .metric {
+      background: rgba(79, 255, 176, 0.05);
+      border: 1px solid rgba(79, 255, 176, 0.1);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      color: var(--electric);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-lbl {
+      font-size: 11px;
+      color: var(--silver-dim);
+      letter-spacing: 0.05em;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--navy-mid);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-text p {
+      font-size: 16px;
+      color: var(--silver-dim);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--navy);
+      border: 1px solid rgba(79, 255, 176, 0.1);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(79, 255, 176, 0.4);
+      background: var(--navy-light);
+    }
+
+    .contact-link-icon {
+      font-family: var(--mono);
+      font-size: 18px;
+      color: var(--electric);
+      width: 24px;
+      text-align: center;
+    }
+
+    .contact-link-info {
+      flex: 1;
+    }
+
+    .contact-link-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--silver-dim);
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-link-value {
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid rgba(79, 255, 176, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--silver-dim);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .hero {
+        padding: 7rem 1.5rem 3rem;
+      }
+
+      .about-grid,
+      .edu-grid,
+      .project-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .project-card.featured {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <span class="nav-logo">RL // Portfolio</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Space Systems Engineer</div>
+      <h1 class="hero-name">Ryan<br>Lennon</h1>
+      <p class="hero-title">M.S. Space Systems Engineering</p>
+      <p class="hero-desc">
+        Graduate researcher specializing in spacecraft guidance, navigation, and control — building the systems that
+        keep satellites pointing, stable, and on mission.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">About me</p>
+          <h2 class="section-heading" style="margin-bottom:1.5rem;">Building spacecraft that think for themselves</h2>
+          <p>
+            I'm a graduate student at Utah State University pursuing a Master of Science in Space Systems Engineering,
+            with a focus on spacecraft attitude determination, estimation, and control. However, I have spent my entire
+            life pursuing my admiration for space applications and astrophysics.
+          </p>
+          <p>
+            I have been with Campbell Scientific for 3 years providing technical support for environmental data
+            acquisition systems. This work sharpened my ability to debug complex hardware-software stacks and
+            communicate technical problems clearly.
+          </p>
+          <p>
+            My current acedemic career involves high-fidelity 3U CubeSat simulations in MATLAB and Simulink, where I
+            design everything from reaction wheel controllers to Kalman filters to full orbital environment models.
+          </p>
+          <div class="skills-list">
+            <span class="skill-tag">MATLAB / Simulink</span>
+            <span class="skill-tag">C / C++</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Quaternion Kinematics</span>
+            <span class="skill-tag">Kalman Filtering</span>
+            <span class="skill-tag">Orbital Mechanics</span>
+            <span class="skill-tag">STK (Level 1)</span>
+            <span class="skill-tag">Git / GitHub</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-num">3.79</div>
+              <div class="stat-label">Graduate GPA</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Years of systems and Support experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label">Career history</p>
+      <h2 class="section-heading">Professional Experience</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-meta">Jul 2023 – Present · Logan, UT</div>
+          <div class="timeline-role">Technical Support Engineer</div>
+          <div class="timeline-company">Campbell Scientific Inc. · Full-Time</div>
+          <ul class="timeline-bullets">
+            <li>Provide technical support for data acquisition systems and environmental measurement instrumentation
+              across commercial and high-profile client accounts</li>
+            <li>Develop and troubleshoot system programming solutions for control, monitoring, and data acquisition
+              applications</li>
+            <li>Assist with deployment and maintenance of remote telemetry systems including radio, cellular, LAN,
+              satellite IP, and GOES satellite communications</li>
+            <li>Collaborate with engineering and support teams to deliver advanced troubleshooting and conduct customer
+              training sessions for hardware and software platforms</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">May 2022 – Mar 2023 · Smithfield, UT</div>
+          <div class="timeline-role">Engineering Intern</div>
+          <div class="timeline-company">Nanobébé · Part-Time</div>
+          <ul class="timeline-bullets">
+            <li>Contributed to development and testing of an advanced baby monitoring system featuring algorithmic
+              breath detection and a Flutter-based mobile application</li>
+            <li>Worked across development, staging, and production environments to support product releases</li>
+            <li>Investigated and debugged issues involving custom Linux kernels and Flutter development workflows</li>
+            <li>Tracked, documented, and reported software and hardware bugs using Azure DevOps</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div style="margin-top:4rem;">
+        <p class="section-label" style="margin-bottom:1.5rem;">Education</p>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-school">Utah State University</div>
+            <div class="edu-degree">M.S. Space Systems Engineering</div>
+            <div class="edu-meta">Aug 2024 – Present · Logan, UT</div>
+            <div class="edu-gpa">GPA: 3.79</div>
+            <div style="margin-top:1rem; font-size:13px; color:var(--silver-dim); font-weight:300; line-height:1.6;">
+              Spacecraft Navigation · Spacecraft Guidance · Attitude Control Theory &amp; Application · Spacecraft
+              Instrumentation
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-school">Utah State University</div>
+            <div class="edu-degree">B.S. Electrical Engineering</div>
+            <div class="edu-meta">Aug 2019 – May 2023 · Logan, UT</div>
+            <div class="edu-gpa">GPA: 3.47 · Dean's List: Fall 2019, 2020, 2021</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">My projects</p>
+      <h2 class="section-heading">Engineering Work</h2>
+
+      <div class="project-grid">
+
+        <!-- FEATURED: 3U CubeSat ADCS -->
+        <div class="project-card featured">
+          <div>
+            <div class="project-num">01 / Featured</div>
+            <h3 class="project-title">End-to-End 3U CubeSat ADCS &amp; Mission Simulation</h3>
+            <p class="project-desc">
+              A complete attitude determination and control system (ADCS) mission architecture simulated in MATLAB and
+              Simulink. The spacecraft autonomously switches between ground-tracking and solar-pointing modes,
+              implements realistic actuator constraints, and handles environmental disturbances with momentum dumping.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">MATLAB</span>
+              <span class="project-tag">Simulink</span>
+              <span class="project-tag">Quaternion Kinematics</span>
+              <span class="project-tag">Reaction Wheels</span>
+              <span class="project-tag">Orbital Mechanics</span>
+              <span class="project-tag">EGM2008</span>
+              <span class="project-tag">LEO</span>
+            </div>
+
+            <div class="metrics-grid">
+              <div class="metric">
+                <span class="metric-val">0.57%</span>
+                <span class="metric-lbl">Inner loop overshoot</span>
+              </div>
+              <div class="metric">
+                <span class="metric-val">25 ms</span>
+                <span class="metric-lbl">Inner loop rise time</span>
+              </div>
+              <div class="metric">
+                <span class="metric-val">21 s</span>
+                <span class="metric-lbl">Trajectory completion (trapezoidal)</span>
+              </div>
+              <div class="metric">
+                <span class="metric-val">45°</span>
+                <span class="metric-lbl">Orbital inclination</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <ul class="project-details">
+              <li>Pointed the spacecraft's +Z body axis toward USU (Logan, UT) during communication windows ≥10° above
+                horizon</li>
+              <li>Secondary constraint: align +Y body axis with orbit angular momentum vector during ground contact</li>
+              <li>Sun-pointing mode outside ground passes with +X axis as secondary angular momentum constraint</li>
+
+
+
+              <li>Inner loop proportional controller: gain crossover ~6.7 Hz, 65.5° phase margin, 11.3 dB gain margin
+              </li>
+              <img src="OpenLoopBodePlotwControlGain.png" alt="Inner Open Loop Bode Plot"
+                style="width: 100%; margin-top: 1.5rem;">
+              <img src="ClosedLoopBodePlotwControl.png" alt="Inner Closed Loop Bode Plot"
+                style="width: 100%; margin-top: 1.5rem;">
+              <img src="InnerClosedLoopStepResponse.png" alt="Inner Closed Loop Step Response"
+                style="width: 100%; margin-top: 1.5rem;">
+              <li>Outer loop integrator/lead compensator: 2.8 Hz crossover, zero overshoot, 62.7° phase margin</li>
+              <img src="OuterOpenLoopBode.png" alt="Inner Open Loop Bode Plot" style="width: 100%; margin-top: 1.5rem;">
+              <img src="OuterClosedLoopBode.png" alt="Inner Closed Loop Bode Plot"
+                style="width: 100%; margin-top: 1.5rem;">
+              <img src="OuterClosedLoopStep.png" alt="Inner Closed Loop Step Response"
+                style="width: 100%; margin-top: 1.5rem;">
+              <li>Trapezoidal trajectory profiling with command feedforward to minimize tracking error</li>
+              <!-- This was derived by making the output to commanded input ratio 1 in our transfer function. This led to the
+              result implemented in Simulink where the torque and angular momentum generated by the trapezoidal
+              trajectory are multiplied by the moment of inertia tensor and the 3x3 diagonal gain matrix for the inner
+              loop, Kd. -->
+              <img src="thetaecommandff.png" alt="Error Angle (Theta_e)" style="width: 100%; margin-top: 1.5rem;">
+              <img src="hwBcommandff.png" alt="Angular Velocity in Body frame" style="width: 100%; margin-top: 1.5rem;">
+              <img src="hwdotBcommandff.png" alt="Angular Acceleration in Body frame"
+                style="width: 100%; margin-top: 1.5rem;">
+              <img src="qBIcommandff.png" alt="Quaternion State Change" style="width: 100%; margin-top: 1.5rem;">
+
+              <li>Reaction wheel saturation handling with anti-windup and proportional switching near limits</li>
+              <li>Momentum dumping via magnetic torque rods using a scaled Mstar approach</li>
+              <img src="momdumpopenloop.png" alt="Momentum Dumping Open Loop Bode"
+                style="width: 100%; margin-top: 1.5rem;">
+              <img src="momdumpsteperr.png" alt="Momentum Dumping Step Error Rejection"
+                style="width: 100%; margin-top: 1.5rem;">
+              <img src="momdumpmagmom.png" alt="Momentum Dumping Commanded Magnetic Moment"
+                style="width: 100%; margin-top: 1.5rem;">
+              <img src="momdumpreactwheels.png" alt="Reaction Wheels Angular Momentum"
+                style="width: 100%; margin-top: 1.5rem;">
+
+              <li>World Magnetic Model 2020 + eclipse detection via Julian Date sun vector calculation</li>
+
+              <li>EGM2008 gravity field, atmospheric drag, solar radiation pressure, and gravity gradient torques
+                modeled.</li>
+              From the calculated orbital environment parameters, we can calculate aerodynamic, solar
+              radiation, gravity gradient,
+              and magnetic torques. This was done for aerodynamics and solar radiation by calculating the angle of
+              incidence of air and radiation
+              on the satellite and then generating the forces and torques distributed to the spacecraft from these
+              effects. We had to assume zero in-plane
+              forces and that each panel is a perfectly flat plate so we could integrate over the entire surface area
+              to generate a centroid force.
+              Gravity gradient torques are generated due to the uneven distribution of mass in a spacecraft. The
+              equation implemented in simulink is
+              <math display="block">
+                <mfrac>
+                  <mrow>
+                    <mn>3</mn>
+                    <mi>mu</mi>
+                  </mrow>
+                  <mrow>
+                    <msup>
+                      <mi>r</mi>
+                      <mn>3</mn>
+                    </msup>
+                  </mrow>
+                </mfrac>
+                <mi>n</mi>
+                <mo>x</mo>
+                <msup>
+                  <mi>J</mi>
+                  <mi>c</mi>
+                </msup>
+                <mi>n</mi>
+              </math>
+              Using DCMs, we can create the gradient torque as seen below
+              <img src="gradtorque.png" alt="Reaction Wheels Angular Momentum" style="width: 100%; margin-top: 1.5rem;">
+              Finally, the electronics on the spacecraft act as a small magnet that can interact with the Earth’s
+              large magnetic field.
+              We can model this disturbance with a cross product between our satellites electronics (magnetic dipole)
+              and the Earth's magnetic field (magnetic field).
+
+              <math>
+                <mi>Tm</mi>
+                <mo>=</mo>
+                <mi>m</mi>
+                <mo>x</mo>
+                <mi>B</mi>
+              </math>
+
+
+            </ul>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: Kalman Filter -->
+        <div class="project-card">
+          <div class="project-num">02</div>
+          <h3 class="project-title">Quaternion Attitude Estimation via Kalman Filter</h3>
+          <p class="project-desc">
+            A spacecraft attitude estimation system using a Kalman filter to track orientation and angular velocity
+            while compensating for gyroscope bias and noisy measurements. The filter converges rapidly to steady-state
+            bias estimates and provides smooth angular velocity outputs.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">MATLAB</span>
+            <span class="project-tag">Kalman Filter</span>
+            <span class="project-tag">State Estimation</span>
+            <span class="project-tag">Sensor Fusion</span>
+            <span class="project-tag">ECE 6345</span>
+          </div>
+          <ul class="project-details" style="margin-top:1.25rem;">
+            <li>Quaternion-based state vector with gyroscope bias augmentation</li>
+            <li>Measurement updates from two star-tracker / vector sensor sources at different sampling rates</li>
+            <li>Filter tracks attitude closely, including after a large attitude change near the 40-second mark.
+            </li>This mission had the primary
+            constraint of pointing the positive z body axis at Utah State University (41.7452 degrees N, 111.8097
+            degrees W, 1456.334 m altitude) when the satellite is 10 degrees above the horizon. There is a secondary
+            constraint to point the y-axis in the direction of the orbit angular momentum vector. When the satellite
+            is not pointing at Logan, the solar panel deployable shall point towards the sun with the x axis pointed
+            in the direction of the orbit angular momentum vector as a secondary restraint.
+
+            To achieve this, we created a mission planning simulation to find the times and commands that we want to
+            send the satellite. We specified a vector from the spacecraft to the sun and created a Y basis vector to
+            point in the sun’s direction. That basis vector was crossed with the angular momentum vector to satisfy
+            the secondary constraint to the best of our ability. Finally, those two vectors were crossed to complete
+            the 3-body axis, coalesce into a DCM, and convert to a quaternion. A similar process is done for the Logan
+            point. However, we also needed to create an “up” pointing vector based on the latitude, longitude, and
+            altitude given for the USU ground site. From this mission planning simulation, we could see the
+            satellite’s zenith angle and import the sun and logan quaternions into our main simulation.
+
+            <img src="kalmanvector1.png" alt="Angle in Singular Vector" style="width: 100%; margin-top: 1.5rem;">
+            <img src="kalmanqhatbivqbi.png" alt="qhat in Body Frame vs q in Body Frame"
+              style="width: 100%; margin-top: 1.5rem;">
+            Biases converge to steady state quickly; estimated and true quaternions align through simulation
+            <img src="kalmanbias.png" alt="Angular Velocity Bias" style="width: 100%; margin-top: 1.5rem;">
+            Kalman smoothing visibly reduces input noise on angular velocity signals
+            <img src="kalmanwbiinput.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
+          </ul>
+        </div>
+
+        <!-- PROJECT 3: Inner/Outer Loop Control -->
+        <div class="project-card">
+          <div class="project-num">03</div>
+          <h3 class="project-title">Nested Inner/Outer Loop Controller Design</h3>
+          <p class="project-desc">
+            A two-loop cascaded control architecture for a 3U CubeSat driven by a Blue Canyon Technologies XACT reaction
+            wheel assembly. Designed for step, ramp, sine, and disturbance inputs with full frequency-domain stability
+            analysis.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Control Theory</span>
+            <span class="project-tag">Bode Analysis</span>
+            <span class="project-tag">MATLAB</span>
+            <span class="project-tag">Simulink</span>
+            <span class="project-tag">ECE 6340</span>
+          </div>
+          <ul class="project-details" style="margin-top:1.25rem;">
+            <li>Second-order actuator model: 10 Hz natural frequency, √2/2 damping, 10 ms system delay</li>
+            <li>Steady-state ramp error analytically shown to be zero via final value theorem</li>
+            <li>Zero overshoot on outer loop step response; disturbance attenuated within ~500 s</li>
+            <li>Sine tracking at 3.48 rad/s near-perfect amplitude match with expected phase lag</li>
+            <li>Implementation of design onto hardware using C++ and sending the data for modeling via UDP traffic in
+              Simulink</li>
+          </ul>
+        </div>
+
+        <!-- PROJECT 4: Langmuir Probe Analysis -->
+        <div class="project-card">
+          <div class="project-num">04</div>
+          <h3 class="project-title">Impedance of Plasma-Filled Capacitors
+            in a Magnetized Anisotropic Cold Plasma</h3>
+          <p class="project-desc">
+            Numerical and analytical analysis of a Langmuir probe in different geometries.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">PDE Toolbox</span>
+            <span class="project-tag">Capacitive Probes</span>
+            <span class="project-tag">MATLAB</span>
+          </div>
+          <ul class="project-details" style="margin-top:1.25rem;">
+            <li>Mesh object in Matlab with multiple faces</li>
+            <img src="cyl_model.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
+            <img src="sph_model.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
+
+            <li>PDE toolbox to simulate a specific plasma density and frequency hitting the probe face at different
+              angles</li>
+
+            <li>Analytical equations implemented for comparison between expected and measured values</li>
+
+            <img src="fig_cyl_8MHz_og.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
+            <img src="fig_sph_8MHz.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
+            <li>See full report below</li>
+            <a href="ECE7210_Final_v3.pdf" download class="btn-outline" style="display:inline-block; margin-top:1rem;">
+              Download Report
+            </a>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p class="section-label">Contact</p>
+          <h2 class="section-heading">Let's connect</h2>
+          <p>
+            I'm currently pursuing my M.S. at Utah State and open to conversations about spacecraft GNC, internship
+            opportunities, or research collaborations.
+          </p>
+          <p>Logan, Utah</p>
+        </div>
+
+        <div class="contact-links">
+          <a href="mailto:ryanlennon8@yahoo.com" class="contact-link">
+            <div class="contact-link-icon">@</div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">ryanlennon8@yahoo.com</div>
+            </div>
+          </a>
+          <a href="tel:8458209892" class="contact-link">
+            <div class="contact-link-icon">#</div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">Phone</div>
+              <div class="contact-link-value">845-820-9892</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/ryan-d-lennon" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/ryan-d-lennon</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Ryan Lennon · Space Systems Engineering · Utah State University</p>
+    <p>Logan, Utah · 2026</p>
+  </footer>
+
+</body>
+
+</html>
