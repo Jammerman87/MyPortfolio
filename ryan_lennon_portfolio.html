@@ -27,7 +27,6 @@
       --silver: #c8d6e5;
       --silver-dim: #6b7fa0;
       --white: #f0f5ff;
-      --accent-orange: #ff7c3d;
       --mono: 'DM Mono', monospace;
       --serif: 'Fraunces', serif;
       --sans: 'DM Sans', sans-serif;
@@ -102,9 +101,7 @@
     .hero-grid {
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(79, 255, 176, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(79, 255, 176, 0.03) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(79, 255, 176, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 255, 176, 0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
     }
@@ -219,7 +216,6 @@
       color: var(--electric);
     }
 
-    /* SECTION WRAPPER */
     section {
       padding: 6rem 3rem;
     }
@@ -251,7 +247,6 @@
     .divider {
       height: 1px;
       background: linear-gradient(to right, rgba(79, 255, 176, 0.3), transparent);
-      margin: 0;
     }
 
     /* ABOUT */
@@ -464,7 +459,6 @@
       position: relative;
       overflow: hidden;
       transition: background 0.3s;
-      cursor: default;
     }
 
     .project-card:hover {
@@ -574,6 +568,95 @@
       letter-spacing: 0.05em;
     }
 
+    /* FIGURES ACCORDION */
+    .figures-block {
+      margin-top: 1rem;
+      border: 1px solid rgba(79, 255, 176, 0.12);
+    }
+
+    .figures-block+.figures-block {
+      border-top: none;
+    }
+
+    details {
+      background: rgba(79, 255, 176, 0.02);
+    }
+
+    details[open] {
+      background: rgba(5, 10, 20, 0.5);
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1rem;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--electric);
+      border-bottom: 1px solid rgba(79, 255, 176, 0.08);
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    summary:hover {
+      background: rgba(79, 255, 176, 0.06);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details[open] summary {
+      border-bottom-color: rgba(79, 255, 176, 0.15);
+    }
+
+    .summary-arrow {
+      font-size: 10px;
+      transition: transform 0.2s;
+      color: var(--electric-dim);
+      display: inline-block;
+    }
+
+    details[open] .summary-arrow {
+      transform: rotate(180deg);
+    }
+
+    .figures-inner {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .figures-inner.single {
+      grid-template-columns: 1fr;
+    }
+
+    .fig-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .fig-item img {
+      width: 100%;
+      display: block;
+      border: 1px solid rgba(79, 255, 176, 0.1);
+    }
+
+    .fig-caption {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--silver-dim);
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
     /* CONTACT */
     #contact {
       background: var(--navy-mid);
@@ -641,7 +724,6 @@
       color: var(--white);
     }
 
-    /* FOOTER */
     footer {
       padding: 2rem 3rem;
       border-top: 1px solid rgba(79, 255, 176, 0.1);
@@ -686,6 +768,10 @@
         grid-template-columns: 1fr;
       }
 
+      .figures-inner {
+        grid-template-columns: 1fr;
+      }
+
       footer {
         flex-direction: column;
         gap: 0.5rem;
@@ -715,10 +801,8 @@
       <div class="hero-tag">Space Systems Engineer</div>
       <h1 class="hero-name">Ryan<br>Lennon</h1>
       <p class="hero-title">M.S. Space Systems Engineering</p>
-      <p class="hero-desc">
-        Graduate researcher specializing in spacecraft guidance, navigation, and control — building the systems that
-        keep satellites pointing, stable, and on mission.
-      </p>
+      <p class="hero-desc">Graduate researcher specializing in spacecraft guidance, navigation, and control — building
+        the systems that keep satellites pointing, stable, and on mission.</p>
       <div class="hero-ctas">
         <a href="#projects" class="btn-primary">View Projects</a>
         <a href="#contact" class="btn-outline">Get in Touch</a>
@@ -735,20 +819,14 @@
         <div class="about-text">
           <p class="section-label">About me</p>
           <h2 class="section-heading" style="margin-bottom:1.5rem;">Building spacecraft that think for themselves</h2>
-          <p>
-            I'm a graduate student at Utah State University pursuing a Master of Science in Space Systems Engineering,
+          <p>I'm a graduate student at Utah State University pursuing a Master of Science in Space Systems Engineering,
             with a focus on spacecraft attitude determination, estimation, and control. However, I have spent my entire
-            life pursuing my admiration for space applications and astrophysics.
-          </p>
-          <p>
-            I have been with Campbell Scientific for 3 years providing technical support for environmental data
+            life pursuing my admiration for space applications and astrophysics.</p>
+          <p>I have been with Campbell Scientific for 3 years providing technical support for environmental data
             acquisition systems. This work sharpened my ability to debug complex hardware-software stacks and
-            communicate technical problems clearly.
-          </p>
-          <p>
-            My current acedemic career involves high-fidelity 3U CubeSat simulations in MATLAB and Simulink, where I
-            design everything from reaction wheel controllers to Kalman filters to full orbital environment models.
-          </p>
+            communicate technical problems clearly.</p>
+          <p>My current academic career involves high-fidelity 3U CubeSat simulations in MATLAB and Simulink, where I
+            design everything from reaction wheel controllers to Kalman filters to full orbital environment models.</p>
           <div class="skills-list">
             <span class="skill-tag">MATLAB / Simulink</span>
             <span class="skill-tag">C / C++</span>
@@ -760,17 +838,15 @@
             <span class="skill-tag">Git / GitHub</span>
           </div>
         </div>
-
         <div>
           <div class="about-stats">
             <div class="stat-card">
               <div class="stat-num">3.79</div>
               <div class="stat-label">Graduate GPA</div>
             </div>
-
             <div class="stat-card">
               <div class="stat-num">3</div>
-              <div class="stat-label">Years of systems and Support experience</div>
+              <div class="stat-label">Years of systems and support experience</div>
             </div>
           </div>
         </div>
@@ -785,9 +861,7 @@
     <div class="section-inner">
       <p class="section-label">Career history</p>
       <h2 class="section-heading">Professional Experience</h2>
-
       <div class="timeline">
-
         <div class="timeline-item">
           <div class="timeline-meta">Jul 2023 – Present · Logan, UT</div>
           <div class="timeline-role">Technical Support Engineer</div>
@@ -803,7 +877,6 @@
               training sessions for hardware and software platforms</li>
           </ul>
         </div>
-
         <div class="timeline-item">
           <div class="timeline-meta">May 2022 – Mar 2023 · Smithfield, UT</div>
           <div class="timeline-role">Engineering Intern</div>
@@ -816,7 +889,6 @@
             <li>Tracked, documented, and reported software and hardware bugs using Azure DevOps</li>
           </ul>
         </div>
-
       </div>
 
       <div style="margin-top:4rem;">
@@ -829,8 +901,7 @@
             <div class="edu-gpa">GPA: 3.79</div>
             <div style="margin-top:1rem; font-size:13px; color:var(--silver-dim); font-weight:300; line-height:1.6;">
               Spacecraft Navigation · Spacecraft Guidance · Attitude Control Theory &amp; Application · Spacecraft
-              Instrumentation
-            </div>
+              Instrumentation</div>
           </div>
           <div class="edu-card">
             <div class="edu-school">Utah State University</div>
@@ -858,11 +929,10 @@
           <div>
             <div class="project-num">01 / Featured</div>
             <h3 class="project-title">End-to-End 3U CubeSat ADCS &amp; Mission Simulation</h3>
-            <p class="project-desc">
-              A complete attitude determination and control system (ADCS) mission architecture simulated in MATLAB and
-              Simulink. The spacecraft autonomously switches between ground-tracking and solar-pointing modes,
-              implements realistic actuator constraints, and handles environmental disturbances with momentum dumping.
-            </p>
+            <p class="project-desc">A complete attitude determination and control system (ADCS) mission architecture
+              simulated in MATLAB and Simulink. The spacecraft autonomously switches between ground-tracking and
+              solar-pointing modes, implements realistic actuator constraints, and handles environmental disturbances
+              with momentum dumping.</p>
             <div class="project-tags">
               <span class="project-tag">MATLAB</span>
               <span class="project-tag">Simulink</span>
@@ -872,23 +942,14 @@
               <span class="project-tag">EGM2008</span>
               <span class="project-tag">LEO</span>
             </div>
-
             <div class="metrics-grid">
-              <div class="metric">
-                <span class="metric-val">0.57%</span>
-                <span class="metric-lbl">Inner loop overshoot</span>
-              </div>
-              <div class="metric">
-                <span class="metric-val">25 ms</span>
-                <span class="metric-lbl">Inner loop rise time</span>
-              </div>
-              <div class="metric">
-                <span class="metric-val">21 s</span>
-                <span class="metric-lbl">Trajectory completion (trapezoidal)</span>
-              </div>
-              <div class="metric">
-                <span class="metric-val">45°</span>
-                <span class="metric-lbl">Orbital inclination</span>
+              <div class="metric"><span class="metric-val">0.57%</span><span class="metric-lbl">Inner loop
+                  overshoot</span></div>
+              <div class="metric"><span class="metric-val">25 ms</span><span class="metric-lbl">Inner loop rise
+                  time</span></div>
+              <div class="metric"><span class="metric-val">21 s</span><span class="metric-lbl">Trajectory completion
+                  (trapezoidal)</span></div>
+              <div class="metric"><span class="metric-val">45°</span><span class="metric-lbl">Orbital inclination</span>
               </div>
             </div>
           </div>
@@ -899,97 +960,129 @@
                 horizon</li>
               <li>Secondary constraint: align +Y body axis with orbit angular momentum vector during ground contact</li>
               <li>Sun-pointing mode outside ground passes with +X axis as secondary angular momentum constraint</li>
-
-
-
               <li>Inner loop proportional controller: gain crossover ~6.7 Hz, 65.5° phase margin, 11.3 dB gain margin
               </li>
-              <img src="OpenLoopBodePlotwControlGain.png" alt="Inner Open Loop Bode Plot"
-                style="width: 100%; margin-top: 1.5rem;">
-              <img src="ClosedLoopBodePlotwControl.png" alt="Inner Closed Loop Bode Plot"
-                style="width: 100%; margin-top: 1.5rem;">
-              <img src="InnerClosedLoopStepResponse.png" alt="Inner Closed Loop Step Response"
-                style="width: 100%; margin-top: 1.5rem;">
-              <li>Outer loop integrator/lead compensator: 2.8 Hz crossover, zero overshoot, 62.7° phase margin</li>
-              <img src="OuterOpenLoopBode.png" alt="Inner Open Loop Bode Plot" style="width: 100%; margin-top: 1.5rem;">
-              <img src="OuterClosedLoopBode.png" alt="Inner Closed Loop Bode Plot"
-                style="width: 100%; margin-top: 1.5rem;">
-              <img src="OuterClosedLoopStep.png" alt="Inner Closed Loop Step Response"
-                style="width: 100%; margin-top: 1.5rem;">
-              <li>Trapezoidal trajectory profiling with command feedforward to minimize tracking error</li>
-              <!-- This was derived by making the output to commanded input ratio 1 in our transfer function. This led to the
-              result implemented in Simulink where the torque and angular momentum generated by the trapezoidal
-              trajectory are multiplied by the moment of inertia tensor and the 3x3 diagonal gain matrix for the inner
-              loop, Kd. -->
-              <img src="thetaecommandff.png" alt="Error Angle (Theta_e)" style="width: 100%; margin-top: 1.5rem;">
-              <img src="hwBcommandff.png" alt="Angular Velocity in Body frame" style="width: 100%; margin-top: 1.5rem;">
-              <img src="hwdotBcommandff.png" alt="Angular Acceleration in Body frame"
-                style="width: 100%; margin-top: 1.5rem;">
-              <img src="qBIcommandff.png" alt="Quaternion State Change" style="width: 100%; margin-top: 1.5rem;">
-
-              <li>Reaction wheel saturation handling with anti-windup and proportional switching near limits</li>
-              <li>Momentum dumping via magnetic torque rods using a scaled Mstar approach</li>
-              <img src="momdumpopenloop.png" alt="Momentum Dumping Open Loop Bode"
-                style="width: 100%; margin-top: 1.5rem;">
-              <img src="momdumpsteperr.png" alt="Momentum Dumping Step Error Rejection"
-                style="width: 100%; margin-top: 1.5rem;">
-              <img src="momdumpmagmom.png" alt="Momentum Dumping Commanded Magnetic Moment"
-                style="width: 100%; margin-top: 1.5rem;">
-              <img src="momdumpreactwheels.png" alt="Reaction Wheels Angular Momentum"
-                style="width: 100%; margin-top: 1.5rem;">
-
-              <li>World Magnetic Model 2020 + eclipse detection via Julian Date sun vector calculation</li>
-
-              <li>EGM2008 gravity field, atmospheric drag, solar radiation pressure, and gravity gradient torques
-                modeled.</li>
-              From the calculated orbital environment parameters, we can calculate aerodynamic, solar
-              radiation, gravity gradient,
-              and magnetic torques. This was done for aerodynamics and solar radiation by calculating the angle of
-              incidence of air and radiation
-              on the satellite and then generating the forces and torques distributed to the spacecraft from these
-              effects. We had to assume zero in-plane
-              forces and that each panel is a perfectly flat plate so we could integrate over the entire surface area
-              to generate a centroid force.
-              Gravity gradient torques are generated due to the uneven distribution of mass in a spacecraft. The
-              equation implemented in simulink is
-              <math display="block">
-                <mfrac>
-                  <mrow>
-                    <mn>3</mn>
-                    <mi>mu</mi>
-                  </mrow>
-                  <mrow>
-                    <msup>
-                      <mi>r</mi>
-                      <mn>3</mn>
-                    </msup>
-                  </mrow>
-                </mfrac>
-                <mi>n</mi>
-                <mo>x</mo>
-                <msup>
-                  <mi>J</mi>
-                  <mi>c</mi>
-                </msup>
-                <mi>n</mi>
-              </math>
-              Using DCMs, we can create the gradient torque as seen below
-              <img src="gradtorque.png" alt="Reaction Wheels Angular Momentum" style="width: 100%; margin-top: 1.5rem;">
-              Finally, the electronics on the spacecraft act as a small magnet that can interact with the Earth’s
-              large magnetic field.
-              We can model this disturbance with a cross product between our satellites electronics (magnetic dipole)
-              and the Earth's magnetic field (magnetic field).
-
-              <math>
-                <mi>Tm</mi>
-                <mo>=</mo>
-                <mi>m</mi>
-                <mo>x</mo>
-                <mi>B</mi>
-              </math>
-
-
             </ul>
+
+            <div class="figures-block">
+              <details>
+                <summary>Inner loop frequency &amp; step response <span class="summary-arrow">&#9660;</span></summary>
+                <div class="figures-inner">
+                  <div class="fig-item">
+                    <img src="OpenLoopBodePlotwControlGain.png" alt="Inner open loop Bode plot">
+                    <span class="fig-caption">Open loop Bode w/ control gain</span>
+                  </div>
+                  <div class="fig-item">
+                    <img src="ClosedLoopBodePlotwControl.png" alt="Inner closed loop Bode plot">
+                    <span class="fig-caption">Closed loop Bode w/ control</span>
+                  </div>
+                  <div class="fig-item" style="grid-column:1/-1;">
+                    <img src="InnerClosedLoopStepResponse.png" alt="Inner closed loop step response">
+                    <span class="fig-caption">Closed loop step response</span>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <ul class="project-details">
+              <li>Outer loop integrator/lead compensator: 2.8 Hz crossover, zero overshoot, 62.7° phase margin</li>
+            </ul>
+
+            <div class="figures-block">
+              <details>
+                <summary>Outer loop frequency &amp; step response <span class="summary-arrow">&#9660;</span></summary>
+                <div class="figures-inner">
+                  <div class="fig-item">
+                    <img src="OuterOpenLoopBode.png" alt="Outer open loop Bode">
+                    <span class="fig-caption">Outer open loop Bode</span>
+                  </div>
+                  <div class="fig-item">
+                    <img src="OuterClosedLoopBode.png" alt="Outer closed loop Bode">
+                    <span class="fig-caption">Outer closed loop Bode</span>
+                  </div>
+                  <div class="fig-item" style="grid-column:1/-1;">
+                    <img src="OuterClosedLoopStep.png" alt="Outer closed loop step response">
+                    <span class="fig-caption">Outer closed loop step response</span>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <ul class="project-details">
+              <li>Trapezoidal trajectory profiling with command feedforward to minimize tracking error</li>
+            </ul>
+
+            <div class="figures-block">
+              <details>
+                <summary>Trapezoidal trajectory &amp; feedforward results <span class="summary-arrow">&#9660;</span>
+                </summary>
+                <div class="figures-inner">
+                  <div class="fig-item">
+                    <img src="thetaecommandff.png" alt="Error angle theta_e">
+                    <span class="fig-caption">Error angle (θe)</span>
+                  </div>
+                  <div class="fig-item">
+                    <img src="hwBcommandff.png" alt="Angular momentum hw_B">
+                    <span class="fig-caption">Angular momentum hw_B</span>
+                  </div>
+                  <div class="fig-item">
+                    <img src="hwdotBcommandff.png" alt="Torque hwdot_B">
+                    <span class="fig-caption">Torque ḣw_B</span>
+                  </div>
+                  <div class="fig-item">
+                    <img src="qBIcommandff.png" alt="Quaternion q_BI">
+                    <span class="fig-caption">Quaternion q_BI</span>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <ul class="project-details">
+              <li>Reaction wheel saturation handling with anti-windup and proportional switching near limits</li>
+              <li>Momentum dumping via magnetic torque rods using a scaled M* approach</li>
+            </ul>
+
+            <div class="figures-block">
+              <details>
+                <summary>Momentum dumping results <span class="summary-arrow">&#9660;</span></summary>
+                <div class="figures-inner">
+                  <div class="fig-item">
+                    <img src="momdumpopenloop.png" alt="Momentum dumping open loop Bode">
+                    <span class="fig-caption">Open loop Bode</span>
+                  </div>
+                  <div class="fig-item">
+                    <img src="momdumpsteperr.png" alt="Step error rejection">
+                    <span class="fig-caption">Step error rejection</span>
+                  </div>
+                  <div class="fig-item">
+                    <img src="momdumpmagmom.png" alt="Commanded magnetic moment">
+                    <span class="fig-caption">Commanded magnetic moment (A·m²)</span>
+                  </div>
+                  <div class="fig-item">
+                    <img src="momdumpreactwheels.png" alt="Reaction wheel angular momentum">
+                    <span class="fig-caption">Reaction wheel angular momentum</span>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <ul class="project-details">
+              <li>EGM2008 gravity field, atmospheric drag, solar radiation pressure, and gravity gradient torques
+                modeled</li>
+              <li>World Magnetic Model 2020 + eclipse detection via Julian Date sun vector calculation</li>
+            </ul>
+
+            <div class="figures-block">
+              <details>
+                <summary>Disturbance torque model <span class="summary-arrow">&#9660;</span></summary>
+                <div class="figures-inner single">
+                  <div class="fig-item">
+                    <img src="gradtorque.png" alt="Gravity gradient torque">
+                    <span class="fig-caption">Gravity gradient torque implementation (3μ/r³ · n × J·n)</span>
+                  </div>
+                </div>
+              </details>
+            </div>
           </div>
         </div>
 
@@ -997,11 +1090,9 @@
         <div class="project-card">
           <div class="project-num">02</div>
           <h3 class="project-title">Quaternion Attitude Estimation via Kalman Filter</h3>
-          <p class="project-desc">
-            A spacecraft attitude estimation system using a Kalman filter to track orientation and angular velocity
-            while compensating for gyroscope bias and noisy measurements. The filter converges rapidly to steady-state
-            bias estimates and provides smooth angular velocity outputs.
-          </p>
+          <p class="project-desc">A spacecraft attitude estimation system using a Kalman filter to track orientation and
+            angular velocity while compensating for gyroscope bias and noisy measurements. The filter converges rapidly
+            to steady-state bias estimates and provides smooth angular velocity outputs.</p>
           <div class="project-tags">
             <span class="project-tag">MATLAB</span>
             <span class="project-tag">Kalman Filter</span>
@@ -1011,43 +1102,44 @@
           </div>
           <ul class="project-details" style="margin-top:1.25rem;">
             <li>Quaternion-based state vector with gyroscope bias augmentation</li>
-            <li>Measurement updates from two star-tracker / vector sensor sources at different sampling rates</li>
-            <li>Filter tracks attitude closely, including after a large attitude change near the 40-second mark.
-            </li>This mission had the primary
-            constraint of pointing the positive z body axis at Utah State University (41.7452 degrees N, 111.8097
-            degrees W, 1456.334 m altitude) when the satellite is 10 degrees above the horizon. There is a secondary
-            constraint to point the y-axis in the direction of the orbit angular momentum vector. When the satellite
-            is not pointing at Logan, the solar panel deployable shall point towards the sun with the x axis pointed
-            in the direction of the orbit angular momentum vector as a secondary restraint.
-
-            To achieve this, we created a mission planning simulation to find the times and commands that we want to
-            send the satellite. We specified a vector from the spacecraft to the sun and created a Y basis vector to
-            point in the sun’s direction. That basis vector was crossed with the angular momentum vector to satisfy
-            the secondary constraint to the best of our ability. Finally, those two vectors were crossed to complete
-            the 3-body axis, coalesce into a DCM, and convert to a quaternion. A similar process is done for the Logan
-            point. However, we also needed to create an “up” pointing vector based on the latitude, longitude, and
-            altitude given for the USU ground site. From this mission planning simulation, we could see the
-            satellite’s zenith angle and import the sun and logan quaternions into our main simulation.
-
-            <img src="kalmanvector1.png" alt="Angle in Singular Vector" style="width: 100%; margin-top: 1.5rem;">
-            <img src="kalmanqhatbivqbi.png" alt="qhat in Body Frame vs q in Body Frame"
-              style="width: 100%; margin-top: 1.5rem;">
-            Biases converge to steady state quickly; estimated and true quaternions align through simulation
-            <img src="kalmanbias.png" alt="Angular Velocity Bias" style="width: 100%; margin-top: 1.5rem;">
-            Kalman smoothing visibly reduces input noise on angular velocity signals
-            <img src="kalmanwbiinput.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
+            <li>Measurement updates from two vector sensor sources sampled at different rates</li>
+            <li>Filter tracks attitude closely, including after a large attitude change near the 40-second mark</li>
+            <li>Biases converge to steady state quickly; estimated and true quaternions align through simulation</li>
+            <li>Kalman smoothing visibly reduces input noise on angular velocity signals</li>
           </ul>
+
+          <div class="figures-block" style="margin-top:1.25rem;">
+            <details>
+              <summary>Filter performance figures <span class="summary-arrow">&#9660;</span></summary>
+              <div class="figures-inner">
+                <div class="fig-item">
+                  <img src="kalmanvector1.png" alt="Angle tracking — vector 1">
+                  <span class="fig-caption">Angle tracking — vector 1</span>
+                </div>
+                <div class="fig-item">
+                  <img src="kalmanqhatbivqbi.png" alt="Estimated vs true quaternion">
+                  <span class="fig-caption">q̂_bi vs q_bi</span>
+                </div>
+                <div class="fig-item">
+                  <img src="kalmanbias.png" alt="Gyroscope bias convergence">
+                  <span class="fig-caption">Gyroscope bias convergence</span>
+                </div>
+                <div class="fig-item">
+                  <img src="kalmanwbiinput.png" alt="Raw vs filtered angular velocity">
+                  <span class="fig-caption">Raw vs filtered ω_bi</span>
+                </div>
+              </div>
+            </details>
+          </div>
         </div>
 
         <!-- PROJECT 3: Inner/Outer Loop Control -->
         <div class="project-card">
           <div class="project-num">03</div>
           <h3 class="project-title">Nested Inner/Outer Loop Controller Design</h3>
-          <p class="project-desc">
-            A two-loop cascaded control architecture for a 3U CubeSat driven by a Blue Canyon Technologies XACT reaction
-            wheel assembly. Designed for step, ramp, sine, and disturbance inputs with full frequency-domain stability
-            analysis.
-          </p>
+          <p class="project-desc">A two-loop cascaded control architecture for a 3U CubeSat driven by a Blue Canyon
+            Technologies XACT reaction wheel assembly. Designed for step, ramp, sine, and disturbance inputs with full
+            frequency-domain stability analysis.</p>
           <div class="project-tags">
             <span class="project-tag">Control Theory</span>
             <span class="project-tag">Bode Analysis</span>
@@ -1060,41 +1152,64 @@
             <li>Steady-state ramp error analytically shown to be zero via final value theorem</li>
             <li>Zero overshoot on outer loop step response; disturbance attenuated within ~500 s</li>
             <li>Sine tracking at 3.48 rad/s near-perfect amplitude match with expected phase lag</li>
-            <li>Implementation of design onto hardware using C++ and sending the data for modeling via UDP traffic in
+            <li>Implementation of design onto hardware using C++ and sending data for modeling via UDP traffic in
               Simulink</li>
           </ul>
         </div>
 
-        <!-- PROJECT 4: Langmuir Probe Analysis -->
+        <!-- PROJECT 4: Langmuir Probe -->
         <div class="project-card">
           <div class="project-num">04</div>
-          <h3 class="project-title">Impedance of Plasma-Filled Capacitors
-            in a Magnetized Anisotropic Cold Plasma</h3>
-          <p class="project-desc">
-            Numerical and analytical analysis of a Langmuir probe in different geometries.
-          </p>
+          <h3 class="project-title">Impedance of Plasma-Filled Capacitors in a Magnetized Anisotropic Cold Plasma</h3>
+          <p class="project-desc">Numerical and analytical analysis of a Langmuir probe in cylindrical and spherical
+            geometries using MATLAB's PDE Toolbox.</p>
           <div class="project-tags">
             <span class="project-tag">PDE Toolbox</span>
             <span class="project-tag">Capacitive Probes</span>
             <span class="project-tag">MATLAB</span>
           </div>
           <ul class="project-details" style="margin-top:1.25rem;">
-            <li>Mesh object in Matlab with multiple faces</li>
-            <img src="cyl_model.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
-            <img src="sph_model.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
-
-            <li>PDE toolbox to simulate a specific plasma density and frequency hitting the probe face at different
-              angles</li>
-
-            <li>Analytical equations implemented for comparison between expected and measured values</li>
-
-            <img src="fig_cyl_8MHz_og.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
-            <img src="fig_sph_8MHz.png" alt="Original Measurement Input" style="width: 100%; margin-top: 1.5rem;">
-            <li>See full report below</li>
-            <a href="ECE7210_Final_v3.pdf" download class="btn-outline" style="display:inline-block; margin-top:1rem;">
-              Download Report
-            </a>
+            <li>Mesh objects in MATLAB with multiple faces for cylindrical and spherical probe geometries</li>
+            <li>PDE Toolbox used to simulate plasma density and RF frequency hitting the probe face at varying angles
+            </li>
+            <li>Analytical equations implemented for comparison between expected and simulated impedance values</li>
           </ul>
+
+          <div class="figures-block" style="margin-top:1.25rem;">
+            <details>
+              <summary>Probe geometry models <span class="summary-arrow">&#9660;</span></summary>
+              <div class="figures-inner">
+                <div class="fig-item">
+                  <img src="cyl_model.png" alt="Cylindrical probe mesh">
+                  <span class="fig-caption">Cylindrical mesh model</span>
+                </div>
+                <div class="fig-item">
+                  <img src="sph_model.png" alt="Spherical probe mesh">
+                  <span class="fig-caption">Spherical mesh model</span>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <div class="figures-block">
+            <details>
+              <summary>Impedance results at 8 MHz <span class="summary-arrow">&#9660;</span></summary>
+              <div class="figures-inner">
+                <div class="fig-item">
+                  <img src="fig_cyl_8MHz_og.png" alt="Cylindrical impedance at 8 MHz">
+                  <span class="fig-caption">Cylindrical — 8 MHz</span>
+                </div>
+                <div class="fig-item">
+                  <img src="fig_sph_8MHz.png" alt="Spherical impedance at 8 MHz">
+                  <span class="fig-caption">Spherical — 8 MHz</span>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <div style="margin-top:1.5rem;">
+            <a href="ECE7210_Final_v3.pdf" download class="btn-outline">Download Full Report</a>
+          </div>
         </div>
 
       </div>
@@ -1110,13 +1225,10 @@
         <div class="contact-text">
           <p class="section-label">Contact</p>
           <h2 class="section-heading">Let's connect</h2>
-          <p>
-            I'm currently pursuing my M.S. at Utah State and open to conversations about spacecraft GNC, internship
-            opportunities, or research collaborations.
-          </p>
+          <p>I'm currently pursuing my M.S. at Utah State and open to conversations about spacecraft GNC, internship
+            opportunities, or research collaborations.</p>
           <p>Logan, Utah</p>
         </div>
-
         <div class="contact-links">
           <a href="mailto:ryanlennon8@yahoo.com" class="contact-link">
             <div class="contact-link-icon">@</div>
